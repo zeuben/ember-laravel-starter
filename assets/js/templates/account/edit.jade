@@ -1,0 +1,15 @@
+.span3
+.span6
+    form
+      legend Account Settings
+      fieldset
+        | {{#with content}}
+        | {{view Bootstrap.Forms.TextField valueBinding="firstName" label="First Name" classNamesToAdd="span12" }}
+        | {{view Bootstrap.Forms.TextField valueBinding="lastName" label="Last Name" classNamesToAdd="span12" }}
+        | {{view Bootstrap.Forms.TextArea valueBinding="bio" label="Bio" classNamesToAdd="span12" }}
+        | {{view Bootstrap.Forms.TextField valueBinding="website" label="Website" classNamesToAdd="span12" }}
+        .form-actions
+          <button type="submit" class="btn btn-danger" {{action save}}>Save</button>
+          <button class="btn" {{action cancel}}>Cancel</button>
+        | {{/with}}
+.span3

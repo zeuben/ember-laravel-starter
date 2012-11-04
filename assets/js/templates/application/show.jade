@@ -1,0 +1,38 @@
+.navbar.navbar-fixed-top
+    .navbar-inner.navbar-inverse
+        .container
+            a.brand(href="#")
+                | books
+            ul.nav.pull-right
+                li
+                    a(href="javascript:")
+                        | {{#with App.router.booksController.content}}
+                        | {{#if length}}
+                        span.badge.badge-important {{length}}
+                        | {{/if}}
+                        | {{/with}}
+                li
+                    <a {{action createBook href=true}} rel="tooltip" title="New Book">
+                    i.icon-plus.icon-white
+                    </a>
+
+                li
+                    <a {{action deleteChecked target="App.router.booksController"}} href="javascript:" rel="tooltip" title="Delete Selected Books" {{bindAttr class="App.router.booksController.isEmpty:disabled"}}>
+                    i.icon-trash.icon-white
+                    </a>
+
+                li.dropdown
+                    | {{#with App.router.accountController}}
+                    a.dropdown-toggle(href="javascript:",data-toggle="dropdown")
+                        | {{content.email}}
+                        b.caret
+                    ul.dropdown-menu
+                        li
+                            <a {{action editAccount href=true}} tabindex='-1'>Account</a>
+                        li
+                            <a {{bindAttr href="logouturl"}}>LOGOUT</a>
+                    | {{/with}}
+
+.container-fluid
+    .row-fluid
+        | {{outlet}}

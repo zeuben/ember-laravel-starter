@@ -1,0 +1,50 @@
+
+$iconSpritePath: image-url("/img/glyphicons-halflings.png", image) !default
+$iconWhiteSpritePath: image-url("/img/glyphicons-halflings-white.png", image) !default
+
+@import bootstrap
+
+
+.container-fluid
+  padding: 0 !important
+
+script
+  display: none !important
+
+a
+  text-decoration: none
+
+.disabled
+  display: none !important
+
+.loader
+  background: url("/img/loader.gif")
+  width: 43px
+  height: 11px
+  margin: 10px auto
+
+h1, h2, h3, h4, h5, h6, th
+  font-weight: normal !important
+
+@media (max-width: 767px)
+  body
+    padding: 0 !important
+  
+  .navbar
+    margin: 0 !important
+  
+  .navbar .brand,
+  .navbar .nav,
+  .navbar .nav > li,
+  .navbar .nav > li a
+    float: none !important
+  
+  .navbar .brand,
+  .navbar .nav
+    text-align: center !important
+  
+  .navbar .nav > li
+    display: inline-block !important
+  
+  .navbar .nav > li.disabled
+    display: none !important

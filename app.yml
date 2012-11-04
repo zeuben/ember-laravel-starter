@@ -1,0 +1,43 @@
+application: ember-laravel-starter
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+builtins:
+- remote_api: on
+
+libraries:
+- name: django
+  version: "1.2"
+
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?index\.yaml
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?\..*
+- ^tmp/.*
+- ^assets/.*
+- ^.+file.*
+
+
+handlers:
+
+- url: /css
+  static_dir: public/css/
+
+- url: /js
+  static_dir: public/js/
+
+- url: /img
+  static_dir: public/img/
+
+- url: /!/
+  static_files: public/templates/index.html
+  upload: public/templates/index.html
+  mime_type: text/html
+  login: required
+
+- url: /.*
+  script: wsgi.app
