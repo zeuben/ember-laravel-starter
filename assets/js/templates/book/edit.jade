@@ -1,0 +1,23 @@
+.span3
+.span6
+	| {{#with content}}
+	form
+		legend
+			| {{# if id}}
+			| Edit
+			| {{else}}
+			| New
+			| {{/if}} 
+			| Book
+		fieldset
+			
+			| {{view Bootstrap.Forms.TextField classNamesToAdd="span12" valueBinding="title" label="Title"}}
+			| {{view Bootstrap.Forms.TextArea classNamesToAdd="span12" valueBinding="description" label="Description"}}
+			| {{view Bootstrap.Forms.TextField classNamesToAdd="span12" valueBinding="url" label="Url"}}
+			| {{view Bootstrap.Forms.TextField classNamesToAdd="span12" valueBinding="type" label="Type"}}
+			| {{view Bootstrap.Forms.Select valueBinding="group" contentBinding = "controller.activeStates" label="Active" classNamesToAdd="span12"}}
+			.control-group
+				<button type="submit" class="btn btn-danger" {{action save}}>Save</button>
+				<button class="btn" {{action cancel}}>Cancel</button>
+	| {{/with}}
+.span3

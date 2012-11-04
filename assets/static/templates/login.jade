@@ -1,0 +1,28 @@
+!!! 5
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+head
+  include includes/head
+
+body
+
+  .navbar.navbar-fixed-top
+    .navbar-inner.navbar-inverse
+      .container
+        a.brand(href="#")
+  
+  .container-fluid
+
+    .row-fluid
+    .span4
+    section.span4#login
+      header#header
+        h1 Books
+      section#main
+        <a href="{{login_url}}"> Sign in with Google</a>
+    .span4
+
+</html>

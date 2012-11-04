@@ -1,0 +1,22 @@
+syntax: glob
+
+*.pyo
+*.pyc
+
+*.orig
+*.rej
+
+public/
+tmp/
+*.sass-cache
+*.hbs
+*.html
+Gemfile.lock
+
+#  jasmine-headless-webkit build cache
+.jhw-cache
+
+# credentials
+oauth.yml
+oauth.yaml
+

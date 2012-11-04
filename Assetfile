@@ -1,0 +1,48 @@
+require "json"
+require "rake-pipeline-web-filters"
+
+output "public"
+input "assets" do
+
+  match "css/app.sass" do
+    sass :additional_load_paths => "assets/css"
+    if ENV['RAKEP_MODE'] == 'production'
+      yui_css
+    end
+  end
+
+  match "**.jade" do
+    jade
+  end
+
+  match "js/**/*.html" do
+    handlebars  key_name_proc: proc { |input|
+      path = input.path.dup
+      path.sub!(/^js\//, '')
+      path.sub(/\.html$/, '')
+    } do |input|
+      "#{input}.js"
+    end
+  end
+
+  match "**/*.coffee" do
+    coffee_script :bare => true
+  end
+
+  match "js/**/*.js" do
+    minispade :rewrite_requires => true, :module_id_generator => proc { |input|
+      input.path.sub(/js\//, '').sub(/vendor\//, '').sub(/\.js$/, '')
+    }
+    if ENV['RAKEP_MODE'] == 'production'
+      uglify
+    end
+    concat "js/app.js"
+  end
+
+  match "static/**/*.{html,css,js,ico,png,gif,eot,svg,ttf,woff}" do
+    concat do |input|
+      input.sub(/static\//, '')
+    end
+  end
+
+end

@@ -1,0 +1,35 @@
+.span12
+  | {{#if isLoaded}}
+  table.table.table-condensed
+    thead
+      tr
+        th
+           | {{view Em.Checkbox checkedBinding="allAreChecked"}}
+        th Title
+        th Description
+        th Url
+        th Type
+        th Active
+        th Created On
+        th Updated On
+          
+    tbody
+      
+      {{#each book in controller}}
+      {{#with book}}
+      <tr {{bindAttr class="book.isChecked"}}>
+      td
+        | {{view Em.Checkbox checkedBinding="isChecked"}}
+      <td {{action "editBook" this}}>{{title}}</td>
+      <td {{action "editBook" this}}>{{description}}</td>
+      <td {{action "editBook" this}}>{{url}}</td>
+      <td {{action "editBook" this}}>{{type}}</td>
+      <td {{action "editBook" this}}>{{isActive}}</td>
+      <td {{action "editBook" this}}>{{createdOn}}</td>
+      <td {{action "editBook" this}}>{{updatedOn}}</td>
+      </tr>
+      | {{/with}}
+      | {{/each}}
+  | {{else}}
+  .loader
+  | {{/if}}
